@@ -8,9 +8,6 @@ sdk_version: 4.16.0
 app_file: app.py
 pinned: false
 license: apache-2.0
-preload_from_hub:
-  - mistralai/Mistral-7B-Instruct-v0.2
-  - nopperl/emissions-extraction-lora
 datasets:
   - nopperl/sustainability-report-emissions-instruction-style
   - nopperl/corporate-emission-reports

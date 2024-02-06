@@ -1,11 +1,16 @@
+from subprocess import run
+
 import gradio as gr
+from huggingface_hub import snapshot_download
 
 from corporate_emission_reports.inference import extract_emissions
 
+run(["sh", "install-llamacpp.sh"])
+MODEL_PATH = snapshot_download("nopperl/emissions-extraction-lora-merged-GGUF")
 
 def predict(input_method, document_file, document_url):
     document_path = document_file if input_method == "File" else document_url
-    emissions = extract_emissions(document_path, "mistralai/Mistral-7B-Instruct-v0.2", lora="nopperl/emissions-extraction-lora", engine="hf", low_cpu_mem_usage=True)
+    emissions = extract_emissions(document_path, MODEL_PATH, model_name="ggml-model-q8_0.gguf")
     return emissions.model_dump_json()
 
 with open("description.md", "r") as f:
@@ -28,5 +33,5 @@ interface = gr.Interface(
         analytics_enabled=False,
         cache_examples=False,
     )
-interface.queue().launch(debug=True, share=True)
+interface.queue().launch()
 
