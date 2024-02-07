@@ -25,13 +25,12 @@ interface = gr.Interface(
         outputs=gr.JSON(),
         description=description,
         examples = [
-            ["URL", None, "https://www.bms.com/assets/bms/us/en-us/pdf/bmy-2022-esg-report.pdf"],
-            ["URL", None, "https://www.7andi.com/library/dbps_data/_template_/_res/en/sustainability/sustainabilityreport/2022/pdf/2022_all_01.pdf"],
-            ["URL", None, "https://www.infineon.com/dgdl/Sustainability_at+Infineon_2023.pdf?fileId=8ac78c8b8b657de2018c009d03120100"],
+            ["URL", None, "https://www.deutsche-boerse.com/resource/blob/3373890/1cdeb942b1a02ce3495e25240dfdfe81/data/DBG-Detailed-GRI-index-Deutsche-Bo%CC%88rse-Group-AR-2022.pdf"],
+            ["URL", None, "https://mpmaterials.com/downloads/MP_MATERIALS_2021_ESG_REPORT_A.pdf"],
         ],
         article=article,
         analytics_enabled=False,
-        cache_examples=False,
+        cache_examples=True,
     )
 interface.queue().launch()
 
