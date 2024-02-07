@@ -10,7 +10,7 @@ MODEL_PATH = snapshot_download("nopperl/emissions-extraction-lora-merged-GGUF")
 
 def predict(input_method, document_file, document_url):
     document_path = document_file if input_method == "File" else document_url
-    emissions = extract_emissions(document_path, MODEL_PATH, model_name="ggml-model-q8_0.gguf")
+    emissions = extract_emissions(document_path, MODEL_PATH, model_name="ggml-model-Q5_K_M.gguf")
     return emissions.model_dump_json()
 
 with open("description.md", "r") as f:
